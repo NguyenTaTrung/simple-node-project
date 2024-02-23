@@ -1,12 +1,23 @@
 {
-  "name": "simple-node-project",
+  "name": "web3.coin.trung",
   "version": "1.0.0",
-  "description": "",
+  "description": "Simple node project",
   "main": "./src/index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [],
-  "author": "",
-  "license": "ISC"
+  "author": "NguyenTaTrung",
+  "license": "LGPL-3.0",
+  "directories": {
+    "test": "test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/NguyenTaTrung/simple-node-project.git"
+  },
+  "bugs": {
+    "url": "https://github.com/NguyenTaTrung/simple-node-project/issues"
+  },
+  "homepage": "https://github.com/NguyenTaTrung/simple-node-project#readme"
 }
