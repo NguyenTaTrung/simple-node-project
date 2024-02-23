@@ -1,0 +1,35 @@
+language: node_js
+
+node_js:
+  - "10"
+
+env:
+  - CXX=g++-4.8 HTMLCOIN_RPC_ADDRESS='http://htmlcoin:htmlcoin@localhost:14889' SENDER_ADDRESS='hMZK8FNPRm54jvTLAGEs1biTCgyCkcsmna' WALLET_PASSPHRASE='htmlcoin'
+
+addons:
+  apt:
+    sources:
+    - ubuntu-toolchain-r-test
+    packages:
+    - gcc-4.8
+    - g++-4.8
+
+cache:
+  directories:
+    - "node_modules"
+
+before_install:
+  - wget https://github.com/HTMLCOIN/HTMLCOIN/releases/download/v2.3.2/htmlcoin-2.3.2-linux64.tar.gz
+
+install:
+  - tar -xvzf htmlcoin-2.3.2-linux64.tar.gz
+  - npm install
+  - mkdir test/data/.htmlcoin
+
+script:
+  - ./htmlcoin-2.3.2/bin/htmlcoind -testnet -logevents -rpcuser=htmlcoin -rpcpassword=htmlcoin -datadir=./test/data/.htmlcoin & 
+  - sleep 10
+  - npm run test:cleanenv
+
+after_failure:
+  - cat ~/hweb3.js/test/data/.htmlcoin/testnet3/debug.log
